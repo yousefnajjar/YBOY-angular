@@ -1,0 +1,126 @@
+<app-dashboard></app-dashboard>
+
+
+
+
+<div class="row mb-4" >
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">About-Us
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Image</th>
+
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Opration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{about.info}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+
+
+                                    <img src="./../../../assets/Images/{{about.img}}" alt="user6">
+
+
+
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                        (click)="openUpdateialog(about.id)">Update</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid py-4">
+
+
+
+
+
+</div>
+
+
+
+<ng-template #callUpdateialog>
+    <mat-dialog-content class="mat-typography">
+
+
+
+
+        <form [formGroup]="aboutusForm" class="example-form">
+            <ul>
+                    
+
+                        <div class="row mt-5 justify-content-center" data-aos="fade-up">
+                          <div class="col-lg-10">
+                  
+                            
+                              <div class="form-group mt-3">
+                              
+                                <textarea cols="80" rows="13" type="text" matInput formControlName="info"
+                                [(ngModel)]="about.info" placeholder="About Us"
+                                class="mat-form-field-infix ng-tns-c153-6"></textarea>
+                          
+                              
+                          </div> 
+                 
+                  
+                        </div>
+                  
+                      </div>
+            
+                   
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        
+                        <!-- <textarea cols="80" rows="20" type="text" matInput formControlName="info"
+                            [(ngModel)]="about.info" placeholder=" Mission"
+                            class="mat-form-field-infix ng-tns-c153-6"></textarea> -->
+                    </mat-form-field>
+              
+
+                <li>
+                    <input type="file" #file placeholder="Choose Image" formControlName="image_path"
+                        style="display: none;" (change)="uploadImage(file.files)">
+                    <button (click)="file.click()" class="btn btn-success" style="background-color: #f03c02;">Upload
+                        Image</button>
+                </li>
+
+
+            </ul>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" (click)="UpdateAboutUs()" cdkFocusInitial
+            class="btn btn-info">Save</button>
+    </mat-dialog-actions>
+</ng-template>

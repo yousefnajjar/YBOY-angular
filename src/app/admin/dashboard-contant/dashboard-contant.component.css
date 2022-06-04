@@ -1,0 +1,16 @@
+.navbar ul {
+    display:flex;
+}
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+    display: block;
+    overflow:visible;
+    height: calc(100vh - 360px);
+}
+
+a{
+cursor: pointer;
+}
+
+.bg-gradient-primary {
+    background-image: linear-gradient(195deg, #f44335 0%, #f44335 100%);
+}

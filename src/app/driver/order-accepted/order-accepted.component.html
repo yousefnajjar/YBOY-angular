@@ -1,0 +1,164 @@
+<app-dashboard></app-dashboard>
+
+
+<div class="row"  *ngIf="driver.acceptedOrderFromDriver.length > 0">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+
+
+        <p></p>
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+             
+
+
+                <ng-container *ngFor=" let obj1 of driver.allUserId">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    order Date</th>
+
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    status</th>
+
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        payment</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <ng-container *ngFor=" let obj of driver.acceptedOrderFromDriver">
+                               
+                                <tr *ngIf="obj.user_id == obj1.user_id">
+                            
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.order_Date}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+    
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.status}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.payment_Status}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+
+                            </tr>
+                        </ng-container>
+                        
+                        <td class="align-middle text-center text-sm">
+                            <button mat-button class="btn btn-danger"
+                          (click)="delivered(obj1.user_id)">Order deliverd</button>
+                        </td>
+
+                        <td class="align-middle text-center text-sm">
+                            <button mat-button class="btn btn-danger"
+                            (click)="location(obj1.user_id)" >user Location</button>
+                        </td> 
+
+                        </tbody>
+                    </table>
+
+                </ng-container>
+
+               
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="driver.acceptedOrderFromDriver.length == 0">
+    <img (click)="reload()" class="x" src="./../../../assets/Images/empty-cart.60e68bfd.png">
+</div>
+
+
+
+
+
+
+<ng-template #callLocationDialog>
+    <mat-dialog-content class="mat-typography">
+
+
+        <div class="row mb-4">
+            <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+
+                <div class="card" style="width: 160%;">
+
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive">
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <mat-label>City</mat-label>
+                                    <input readonly value="{{driver.location.city}}" 
+                                    >
+                                </div>
+                           
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <mat-label>Area</mat-label>
+                                    <input readonly value="{{driver.location.area}}" 
+                                    >
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <mat-label>Apartment number</mat-label>
+                                    <input readonly value="{{driver.location.apartment_number}}" 
+                                    >
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <mat-label>Street</mat-label>
+                                    <input readonly value="{{driver.location.street}}" 
+                                    >
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <mat-label>Floor</mat-label>
+                                    <input readonly value="{{driver.location.floor}}" 
+                                    >
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <mat-label>Phone</mat-label>
+                                    <input readonly value="{{driver.location.phone}}" 
+                                    >
+                                </div>
+                        
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Close</button>
+    </mat-dialog-actions>
+</ng-template>

@@ -1,0 +1,149 @@
+<app-dashboard></app-dashboard>
+
+
+<div class="row mb-4">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+    
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    First Name</th>
+
+                                   
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            last Name</th>    
+
+
+
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                email</th>
+        
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    message</th>  
+
+                                                   
+                
+                                
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Opration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr *ngFor="let obj of contact.allContactus">
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.fname}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.lname}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.email}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.message}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                              
+                                
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                  (click)="openEmailDialog(obj.email,obj.fname,obj.lname)" >Send Email</button>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                   (click)="openDeleteDialog(obj.contact_Us_id)">Delete</button>
+                                </td>
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #callEmailDialog  >
+  
+    <h2 mat-dialog-title>Email Body</h2>
+    <mat-dialog-content class="mat-typography" >
+
+        <form [formGroup]="emailForm" class="example-form">
+            <div class="row">
+        <div class="col-md-6 form-group">
+                   
+            <input  type="text" name="fname" class="form-control" id="fname" placeholder="Product name"  matInput
+            formControlName="sendToEmail" readonly>
+          
+          </div>
+
+
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="text" class="form-control" name="lname" id="lname" placeholder="Price"  matInput
+            formControlName="name" readonly>
+        
+          </div>
+         </div>
+      
+        <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Email Body" matInput
+            formControlName="body" ></textarea>
+           
+          </div>
+      
+ </form>
+    </mat-dialog-content>
+  
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Close</button>
+        <button mat-button mat-dialog-close="yes" class="btn btn-danger"
+        (click)="SendContactUsMail()">Send</button>
+    </mat-dialog-actions>
+</ng-template>
+
+
+
+<ng-template #callDeleteDialog>
+    <h2>Are You Sure you want to delete this Contact</h2>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close="no" class="btn btn-info">No</button>
+      <button mat-button mat-dialog-close="yes" class="btn btn-danger">yes</button>
+    </mat-dialog-actions>
+    
+    </ng-template>

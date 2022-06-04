@@ -1,0 +1,300 @@
+
+
+<body class="g-sidenav-show bg-gray-200">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+
+        <hr class="horizontal light mt-0 mb-2">
+        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+          <ul class="navbar-nav">
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a class="nav-link text-white active bg-gradient-primary" (click)="dashboard()">
+               
+                <span class="nav-link-text ms-1">YOBY-Burger</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageAboutus()">
+
+                <span class="nav-link-text ms-1">About US</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageTestemonial()">
+
+                <span class="nav-link-text ms-1">Testemonial</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageCategory()">
+
+                <span class="nav-link-text ms-1">Category</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageProduct()">
+
+                <span class="nav-link-text ms-1">Product</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageWebsite()">
+
+                <span class="nav-link-text ms-1">Website</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageContactus()">
+
+                <span class="nav-link-text ms-1">Contact Us</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageUser()">
+
+                <span class="nav-link-text ms-1">Users</span>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageOrder()">
+
+                <span class="nav-link-text ms-1">current orders</span>
+              </a>
+            </li>
+           
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a  class="nav-link text-white " (click)="manageOrderDone()">
+
+                <span class="nav-link-text ms-1"> Order Done</span>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="token.role == 'Driver'">
+              <a  class="nav-link text-white " (click)="orderAccepted()">
+
+                <span class="nav-link-text ms-1">Order Accepted</span>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="token.role == 'Driver'">
+              <a  class="nav-link text-white " (click)="allOrders()">
+
+                <span class="nav-link-text ms-1"> All Orders</span>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="token.role == 'Driver'">
+              <a  class="nav-link text-white " (click)="OrderDeliverd()">
+
+                <span class="nav-link-text ms-1">Orders Deliverd</span>
+              </a>
+            </li>
+            
+            
+            
+         
+           
+            <li class="nav-item" *ngIf="token.role == 'Admin'">
+              <a class="nav-link text-white " (click)="manageProfile()">
+                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">person</i>
+                </div>
+                <span class="nav-link-text ms-1" >Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white " (click)="logout()">
+                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">login</i>
+                </div>
+                <span class="nav-link-text ms-1">Logout</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+       
+      </aside>
+    
+    
+    
+    
+    
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    
+<!--         
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+          <div class="container-fluid py-1 px-3">
+          
+            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+             
+              <ul class="navbar-nav  justify-content-end">
+             
+                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                  <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                    <div class="sidenav-toggler-inner">
+                      <i class="sidenav-toggler-line"></i>
+                      <i class="sidenav-toggler-line"></i>
+                      <i class="sidenav-toggler-line"></i>
+                    </div>
+                  </a>
+                </li>
+              
+            
+              </ul>
+            </div>
+          </div>
+        </nav> -->
+    
+    
+    
+        
+       
+       
+      </main>
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+     
+<nav role="navigation">
+  <div id="menuToggle">
+
+    <input type="checkbox" />
+
+  
+    <span></span>
+    <span></span>
+    <span></span>
+
+  
+    <ul id="menu">
+    
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a  (click)="dashboard()">
+            YOBY-Burger
+         
+          </a>
+        </li>
+
+
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a   (click)="manageAboutus()">
+
+          About US
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a  (click)="manageTestemonial()">
+
+           Testemonial
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a  (click)="manageCategory()">
+
+            Category
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a (click)="manageProduct()">
+
+            Product
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a (click)="manageWebsite()">
+
+           Website
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a  (click)="manageContactus()">
+
+           Contact Us
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a  (click)="manageUser()">
+
+            Users
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a   (click)="manageOrder()">
+
+            current orders
+          </a>
+        </li>
+       
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a  (click)="manageOrderDone()">
+
+            Order Done
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="token.role == 'Driver'">
+          <a (click)="orderAccepted()">
+
+            Order Accepted
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="token.role == 'Driver'">
+          <a (click)="allOrders()">
+
+             All Orders
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="token.role == 'Driver'">
+          <a  (click)="OrderDeliverd()">
+
+            Orders Deliverd
+          </a>
+        </li>
+        
+        
+        
+     
+       
+        <li class="nav-item" *ngIf="token.role == 'Admin'">
+          <a (click)="manageProfile()">
+          
+            Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a (click)="logout()">
+           
+           Logout
+          </a>
+        </li>
+        
+  
+      
+    </ul>
+
+
+
+
+
+
+
+    
+  </div>
+</nav>
+</body>
+
+
+ 

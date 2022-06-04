@@ -1,0 +1,189 @@
+<app-header></app-header>
+
+
+<body>
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url(../../assets/slider/wallpaperflare.com_wallpaper.jpg);">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>Welcome to <span>YBOY</span></h2>
+              <p>
+                "Y-BOY Burger" is a website specialized in burger dishes and applying it to the customer's own way of adding the customer's favorite items, works on computers and smartphones. The platform is designed to serve different tastes.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(../../assets/slider/wallpaperflare.com_wallpaper\ \(1\).jpg);">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>Orders</h2>
+              <p>Order From Your Home </p>
+             
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url(../../assets/slider/wallpaperflare.com_wallpaper\ \(2\).jpg);">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>Payment</h2>
+              <p>Pay Online Or Cash.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-left-arrow" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-right-arrow" aria-hidden="true"></span>
+      </a>
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators">
+        <li data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></li>
+        <li data-bs-target="#heroCarousel" data-bs-slide-to="2" class=""></li>
+        <li data-bs-target="#heroCarousel" data-bs-slide-to="1" class=""></li>
+      </ol>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <section id="about-us" class="about-us">
+    <div class="container">
+
+      <div class="row no-gutters">
+        <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"
+          data-aos="fade-right"></div>
+        <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+          <div class="content d-flex flex-column justify-content-center">
+            <h3 data-aos="fade-up">What's YBOY Burger</h3>
+            <p data-aos="fade-up">Our goal of our Website is to attract the largest number of customers who are amateurs
+              who make their own meals.
+            </p>
+            <div class="row">
+              <div class="col-md-6 icon-box" data-aos="fade-up">
+                <i class="bx bx-receipt"></i>
+                <h4> About Us </h4>
+                <p>{{aboutUs.info}}</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- End .content-->
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+
+  <!-- <section id="portfolio" class="portfolio">
+  
+
+      <div class="container mt-5 mb-5">
+
+        <h1 class="h1" data-aos="fade-up">Our Menu</h1>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-up" *ngFor="let obj of product.allProduct">
+
+            <div class="foodbox mt-3 mb-3" 
+              style.background-image="url('./../../assets/Images/{{obj.image_path}}')">
+              
+
+               
+            <h1 id="m">{{obj.product_name}}</h1>
+            </div>
+              
+              <p>{{obj.product_description}}</p>
+              <p>{{obj.product_price | currency:'JD '}}</p>
+              <br />
+             
+              <div class="carousel-content animate__animated animate__fadeInUp">
+                <a class="btn-get-started" style="color: black;">Buy Now &nbsp;<i class="bi bi-bag"></i></a>
+              </div>
+              
+          
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+  </section> -->
+
+
+
+
+  <h1  class="h1" data-aos="fade-up">Our Menu</h1>
+
+  <main id="menu" class="page-content" >
+    <div class="card" *ngFor="let obj of product.allProductInHome" 
+     style.background-image="url('./../../assets/Images/{{obj.image_path}}')">
+      <div class="content2" >
+        <div>
+        <h2 class="title">{{obj.product_name}}</h2>
+      </div>
+        <p class="copy">{{obj.product_description}}</p>
+        <div class="carousel-content animate__animated animate__fadeInUp hover">
+        
+          <!-- <a class="btn-get-started" style="color: white;">Add to Cart</a> -->
+        </div>
+      </div>
+
+     
+    </div>
+
+
+    <div class="card" style="background-image: url(./../../assets/Images/cccc.jpg);">
+      <div class="content2" >
+        <div>
+        <h2 class="title"></h2>
+      </div>
+        <p class="copy"></p>
+        <div class="carousel-content animate__animated animate__fadeInUp hover"
+        >
+        
+          <a class="btn-get-started" style="background-color: rgb(254, 132, 56);"
+           (click)="goToMenu()">Order Now</a>
+        </div>
+      </div>
+
+     
+    </div>
+
+    
+
+  </main>
+
+
+</body>
+
+
+<app-footer></app-footer>

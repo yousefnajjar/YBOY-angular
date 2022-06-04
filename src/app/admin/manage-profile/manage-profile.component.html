@@ -1,0 +1,150 @@
+
+<app-dashboard></app-dashboard>
+
+
+<div class="small-12 medium-2 large-2 columns">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+<div id="des">
+<div class="container col-lg-4" id="container">
+	<div class="form-container sign-in-container col-lg-4">
+		<form [formGroup]="imageForm" >
+
+
+
+                <div class="row">
+                    <div class="small-12 medium-2 large-2 columns">
+                      <div >
+                        <img class="img" src="./../../../assets/Images/{{profile.userInfo.user_imagepath}}">
+                  
+                      </div>
+                     
+                        <i class="fa fa-camera upload-button" (click)="file.click()"></i>
+                        <input type="file" #file placeholder="Choose Image" formControlName="user_imagepath"
+                style="display: none;" (change)="UploadUserPic(file.files)">
+                      
+                    </div>
+                  </div>
+
+                    <button class="btn btn-success" style="background-color: #f03c02;"
+                  (click)="saveImage()" [disabled]="!imageForm.valid">
+                    Save</button>
+			
+
+			
+		</form>
+
+
+
+</div>
+</div>
+
+
+        <div class="container col-lg-4" id="container">   
+	
+<div class="form-container sign-in-container col-lg-4">
+        <form [formGroup]="infoForm" >
+			<h1>Update Info</h1>
+
+			<div class="form-group input-group">
+				<input type="text" class="input form-control " placeholder="First name" matInput
+				  formControlName="fname" >
+				<mat-error *ngIf="infoForm.controls['fname'].hasError('required')" class="col-lg-12">
+				
+				</mat-error>
+			
+				
+			  </div>
+			  <div class="form-group input-group">
+				  		<input type="text" class="input form-control " placeholder="Last name" matInput
+				  formControlName="lname" >
+				<mat-error *ngIf="infoForm.controls['lname'].hasError('required')" class="col-lg-12">
+					
+				</mat-error>
+				<div class="input-group-prepend">
+
+				</div>
+		
+			  </div>
+
+			  <div class="form-group input-group">
+				<input type="text" class="input form-control " placeholder="Phone number" matInput
+				  formControlName="phone" >
+				
+			
+			  </div>
+	
+			<div class="form-group input-group">
+			<mat-error *ngIf="infoForm.controls['user_email'].hasError('required')" >
+				
+			  </mat-error>
+			 
+			  <input  type="email" class="input form-control" placeholder="Email" matInput
+				formControlName="user_email">
+
+
+			  <mat-error *ngIf="infoForm.controls['user_email'].hasError('email') && 
+			  !infoForm.controls['user_email'].hasError('required')" class="col-lg-12">
+				<p style="text-align: center; color: red;"> Please enter a valid email address</p>
+			  </mat-error>
+			  </div>
+
+
+			 
+			
+			<button [disabled]="!infoForm.valid " (click)="saveInfo()">Update</button>
+			
+		</form>
+
+    </div></div>
+
+    <div class="container col-lg-4" id="container">   
+	
+        <div class="form-container sign-in-container col-lg-4">
+                <form [formGroup]="passwordForm" >
+                    <h1>Update Password</h1>
+      
+                   
+                    <div class="form-group input-group">
+                      
+                        <input  type="password" class="input form-control" placeholder="Old Password" matInput
+                          formControlName="old_password">
+                  
+                      </div>
+        
+                      <div class="form-group input-group">
+                        <mat-error *ngIf="passwordForm.controls['user_password'].hasError('required')">
+                         
+                        </mat-error>
+                    
+                        <input  type="password" class="input form-control" placeholder="New Password" matInput
+                          formControlName="user_password">
+                        <mat-error class="col-lg-12"
+                          *ngIf="passwordForm.controls['user_password'].hasError('minlength') && !passwordForm.controls['user_password'].hasError('required')">
+                          <p style="text-align: center; color: red;"> Please enter a strong password</p>
+                        </mat-error>
+                      </div>
+        
+                      <div class="form-group input-group">
+                        <mat-error *ngIf="passwordForm.controls['confirmpassword'].hasError('required')">
+                         
+                        </mat-error>
+                    
+                        <input type="password" class="input form-control" placeholder="Confirm password" matInput
+                          formControlName="confirmpassword">
+                          <mat-error *ngIf="passwordForm.controls['confirmpassword'].value !=
+                          passwordForm.controls['user_password'].value" class="col-lg-12">
+                                <p style="text-align: center; color: red;">Confirm password must equal password</p>
+                              </mat-error>
+                      </div>
+        
+        
+                    
+                    <button [disabled]="!passwordForm.valid " (click)="savePassword()">Update</button>
+                    
+                </form>
+        
+            </div></div>
+
+
+
+</div></div></div>

@@ -1,0 +1,526 @@
+<app-dashboard></app-dashboard>
+
+
+<div class="row mb-4">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+
+        <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center"> -->
+             <form [formGroup]="searchForm"><div class="input-group input-group-outline">
+             
+              <input type="text" formControlName="fullname" class="form-control" placeholder="Search By User Name">
+             
+              <button  mat-button class="btn btn-danger" style="height: 40px; margin-top: 7px;"
+              (click)="search()">Search</button>
+            </div> 
+        </form>
+          <!-- </div> -->
+    <button  mat-button class="btn btn-danger"
+(click)="openAdminDialog()">Create Admin</button>
+<button  mat-button class="btn btn-danger"
+(click)="openUserDialog()">Create User</button>
+<button  mat-button class="btn btn-danger"
+(click)="openDriverDialog()">Create Driver</button>
+<button  mat-button class="btn btn-danger"
+(click)="openChifDialog()">Create chif</button>
+<button  mat-button class="btn btn-danger"
+(click)="allUsers()">All Users</button>
+<br/><br/>
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    First Name</th>
+
+                                   
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            last Name</th>    
+
+
+
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                email</th>
+        
+                                                
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                phone</th>
+
+                                              
+                                                    
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                        Positoin</th>  
+
+                                                   
+                
+                                
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Opration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr *ngFor="let obj of user.alluser">
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.fname}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.lname}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.user_email}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.phone}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.role_name}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                              
+                                
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                 (click)="openDeleteDialog(obj.user_id)" >Delete</button>
+                                </td>
+                                
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<ng-template #callAdminDialog>
+    <mat-dialog-content class="mat-typography" style="overflow: hidden;">
+<div class="img">
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form [formGroup]="UserForm">
+			<h1>Create Admin</h1>
+
+			<div class="form-group input-group">
+				<input type="text" class="input form-control " placeholder="First name" matInput
+				  formControlName="fname" >
+				<mat-error *ngIf="UserForm.controls['fname'].hasError('required')" class="col-lg-12">
+				
+				</mat-error>
+			
+				
+			  </div>
+			  <div class="form-group input-group">
+				  		<input type="text" class="input form-control " placeholder="Last name" matInput
+				  formControlName="lname" >
+				<mat-error *ngIf="UserForm.controls['lname'].hasError('required')" class="col-lg-12">
+					
+				</mat-error>
+				<div class="input-group-prepend">
+
+				</div>
+		
+			  </div>
+
+			  <div class="form-group input-group">
+				<input type="text" class="input form-control " placeholder="Phone number" matInput
+				  formControlName="phone" >
+				
+			
+			  </div>
+	
+			<div class="form-group input-group">
+			<mat-error *ngIf="UserForm.controls['user_email'].hasError('required')" >
+				
+			  </mat-error>
+			 
+			  <input  type="email" class="input form-control" placeholder="Email" matInput
+				formControlName="user_email">
+
+
+			  <mat-error *ngIf="UserForm.controls['user_email'].hasError('email') && 
+			  !UserForm.controls['user_email'].hasError('required')" class="col-lg-12">
+				<p style="text-align: center; color: red;">invalid </p>
+			  </mat-error>
+			  </div>
+
+
+			  <div class="form-group input-group">
+				<mat-error *ngIf="UserForm.controls['user_password'].hasError('required')">
+				 
+				</mat-error>
+			
+				<input  type="password" class="input form-control" placeholder="password" matInput
+				  formControlName="user_password">
+				<mat-error class="col-lg-12"
+				  *ngIf="UserForm.controls['user_password'].hasError('minlength') && !UserForm.controls['user_password'].hasError('required')">
+				  <p style="text-align: center; color: red;"> *</p>
+				</mat-error>
+			  </div>
+
+			  <div class="form-group input-group">
+				<mat-error *ngIf="UserForm.controls['confirmpassword'].hasError('required')">
+				 
+				</mat-error>
+			
+				<input type="password" class="input form-control" placeholder="Confirm password" matInput
+				  formControlName="confirmpassword">
+				  <mat-error *ngIf="UserForm.controls['confirmpassword'].value !=
+				  UserForm.controls['user_password'].value" class="col-lg-12">
+						<p style="text-align: center; color: red;">*</p>
+					  </mat-error>
+			  </div>
+
+		</form>
+
+	</div>
+	
+
+</div>
+</div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close="no" class="btn btn-info">Cancel</button>
+        <button mat-button mat-dialog-close="yes" class="btn btn-danger" [disabled]="!UserForm.valid"
+        (click)="createAdmin()">Create</button>
+      </mat-dialog-actions>
+</ng-template>
+
+
+
+<ng-template #callUserDialog>
+    <mat-dialog-content class="mat-typography" style="overflow: hidden;">
+<div class="img">
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form [formGroup]="UserForm">
+			<h1>Create User</h1>
+
+			<div class="form-group input-group">
+				<input type="text" class="input form-control " placeholder="First name" matInput
+				  formControlName="fname" >
+				<mat-error *ngIf="UserForm.controls['fname'].hasError('required')" class="col-lg-12">
+				
+				</mat-error>
+			
+				
+			  </div>
+			  <div class="form-group input-group">
+				  		<input type="text" class="input form-control " placeholder="Last name" matInput
+				  formControlName="lname" >
+				<mat-error *ngIf="UserForm.controls['lname'].hasError('required')" class="col-lg-12">
+					
+				</mat-error>
+				<div class="input-group-prepend">
+
+				</div>
+		
+			  </div>
+
+			  <div class="form-group input-group">
+				<input type="text" class="input form-control " placeholder="Phone number" matInput
+				  formControlName="phone" >
+				
+			
+			  </div>
+	
+			<div class="form-group input-group">
+			<mat-error *ngIf="UserForm.controls['user_email'].hasError('required')" >
+				
+			  </mat-error>
+			 
+			  <input  type="email" class="input form-control" placeholder="Email" matInput
+				formControlName="user_email">
+
+
+			  <mat-error *ngIf="UserForm.controls['user_email'].hasError('email') && 
+			  !UserForm.controls['user_email'].hasError('required')" class="col-lg-12">
+				<p style="text-align: center; color: red;">invalid </p>
+			  </mat-error>
+			  </div>
+
+
+			  <div class="form-group input-group">
+				<mat-error *ngIf="UserForm.controls['user_password'].hasError('required')">
+				 
+				</mat-error>
+			
+				<input  type="password" class="input form-control" placeholder="password" matInput
+				  formControlName="user_password">
+				<mat-error class="col-lg-12"
+				  *ngIf="UserForm.controls['user_password'].hasError('minlength') && !UserForm.controls['user_password'].hasError('required')">
+				  <p style="text-align: center; color: red;"> *</p>
+				</mat-error>
+			  </div>
+
+			  <div class="form-group input-group">
+				<mat-error *ngIf="UserForm.controls['confirmpassword'].hasError('required')">
+				 
+				</mat-error>
+			
+				<input type="password" class="input form-control" placeholder="Confirm password" matInput
+				  formControlName="confirmpassword">
+				  <mat-error *ngIf="UserForm.controls['confirmpassword'].value !=
+				  UserForm.controls['user_password'].value" class="col-lg-12">
+						<p style="text-align: center; color: red;">*</p>
+					  </mat-error>
+			  </div>
+
+		</form>
+
+	</div>
+	
+
+</div>
+</div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close="no" class="btn btn-info">Cancel</button>
+        <button mat-button mat-dialog-close="yes" class="btn btn-danger" [disabled]="!UserForm.valid"
+        (click)="createUser()">Create</button>
+      </mat-dialog-actions>
+</ng-template>
+
+
+<ng-template #callDeleteDialog>
+    <h2>Are You Sure you want to delete this User</h2>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close="no" class="btn btn-info">No</button>
+      <button mat-button mat-dialog-close="yes" class="btn btn-danger"
+      >yes</button>
+    </mat-dialog-actions>
+    
+    </ng-template>
+
+
+
+	<ng-template #callChifDialog>
+		<mat-dialog-content class="mat-typography" style="overflow: hidden;">
+	<div class="img">
+	<div class="container" id="container">
+		<div class="form-container sign-in-container">
+			<form [formGroup]="UserForm">
+				<h1>Create Chif</h1>
+	
+				<div class="form-group input-group">
+					<input type="text" class="input form-control " placeholder="First name" matInput
+					  formControlName="fname" >
+					<mat-error *ngIf="UserForm.controls['fname'].hasError('required')" class="col-lg-12">
+					
+					</mat-error>
+				
+					
+				  </div>
+				  <div class="form-group input-group">
+							  <input type="text" class="input form-control " placeholder="Last name" matInput
+					  formControlName="lname" >
+					<mat-error *ngIf="UserForm.controls['lname'].hasError('required')" class="col-lg-12">
+						
+					</mat-error>
+					<div class="input-group-prepend">
+	
+					</div>
+			
+				  </div>
+	
+				  <div class="form-group input-group">
+					<input type="text" class="input form-control " placeholder="Phone number" matInput
+					  formControlName="phone" >
+					
+				
+				  </div>
+		
+				<div class="form-group input-group">
+				<mat-error *ngIf="UserForm.controls['user_email'].hasError('required')" >
+					
+				  </mat-error>
+				 
+				  <input  type="email" class="input form-control" placeholder="Email" matInput
+					formControlName="user_email">
+	
+	
+				  <mat-error *ngIf="UserForm.controls['user_email'].hasError('email') && 
+				  !UserForm.controls['user_email'].hasError('required')" class="col-lg-12">
+					<p style="text-align: center; color: red;">invalid </p>
+				  </mat-error>
+				  </div>
+	
+	
+				  <div class="form-group input-group">
+					<mat-error *ngIf="UserForm.controls['user_password'].hasError('required')">
+					 
+					</mat-error>
+				
+					<input  type="password" class="input form-control" placeholder="password" matInput
+					  formControlName="user_password">
+					<mat-error class="col-lg-12"
+					  *ngIf="UserForm.controls['user_password'].hasError('minlength') && !UserForm.controls['user_password'].hasError('required')">
+					  <p style="text-align: center; color: red;"> *</p>
+					</mat-error>
+				  </div>
+	
+				  <div class="form-group input-group">
+					<mat-error *ngIf="UserForm.controls['confirmpassword'].hasError('required')">
+					 
+					</mat-error>
+				
+					<input type="password" class="input form-control" placeholder="Confirm password" matInput
+					  formControlName="confirmpassword">
+					  <mat-error *ngIf="UserForm.controls['confirmpassword'].value !=
+					  UserForm.controls['user_password'].value" class="col-lg-12">
+							<p style="text-align: center; color: red;">*</p>
+						  </mat-error>
+				  </div>
+	
+			</form>
+	
+		</div>
+		
+	
+	</div>
+	</div>
+		</mat-dialog-content>
+		<mat-dialog-actions align="end">
+			<button mat-button mat-dialog-close="no" class="btn btn-info">Cancel</button>
+			<button mat-button mat-dialog-close="yes" class="btn btn-danger" [disabled]="!UserForm.valid"
+			(click)="createChif()">Create</button>
+		  </mat-dialog-actions>
+	</ng-template>
+	
+	<ng-template #callDriverDialog>
+		<mat-dialog-content class="mat-typography" style="overflow: hidden;">
+	<div class="img">
+	<div class="container" id="container">
+		<div class="form-container sign-in-container">
+			<form [formGroup]="UserForm">
+				<h1>Create Driver</h1>
+	
+				<div class="form-group input-group">
+					<input type="text" class="input form-control " placeholder="First name" matInput
+					  formControlName="fname" >
+					<mat-error *ngIf="UserForm.controls['fname'].hasError('required')" class="col-lg-12">
+					
+					</mat-error>
+				
+					
+				  </div>
+				  <div class="form-group input-group">
+							  <input type="text" class="input form-control " placeholder="Last name" matInput
+					  formControlName="lname" >
+					<mat-error *ngIf="UserForm.controls['lname'].hasError('required')" class="col-lg-12">
+						
+					</mat-error>
+					<div class="input-group-prepend">
+	
+					</div>
+			
+				  </div>
+	
+				  <div class="form-group input-group">
+					<input type="text" class="input form-control " placeholder="Phone number" matInput
+					  formControlName="phone" >
+					
+				
+				  </div>
+		
+				<div class="form-group input-group">
+				<mat-error *ngIf="UserForm.controls['user_email'].hasError('required')" >
+					
+				  </mat-error>
+				 
+				  <input  type="email" class="input form-control" placeholder="Email" matInput
+					formControlName="user_email">
+	
+	
+				  <mat-error *ngIf="UserForm.controls['user_email'].hasError('email') && 
+				  !UserForm.controls['user_email'].hasError('required')" class="col-lg-12">
+					<p style="text-align: center; color: red;">invalid </p>
+				  </mat-error>
+				  </div>
+	
+	
+				  <div class="form-group input-group">
+					<mat-error *ngIf="UserForm.controls['user_password'].hasError('required')">
+					 
+					</mat-error>
+				
+					<input  type="password" class="input form-control" placeholder="password" matInput
+					  formControlName="user_password">
+					<mat-error class="col-lg-12"
+					  *ngIf="UserForm.controls['user_password'].hasError('minlength') && !UserForm.controls['user_password'].hasError('required')">
+					  <p style="text-align: center; color: red;"> *</p>
+					</mat-error>
+				  </div>
+	
+				  <div class="form-group input-group">
+					<mat-error *ngIf="UserForm.controls['confirmpassword'].hasError('required')">
+					 
+					</mat-error>
+				
+					<input type="password" class="input form-control" placeholder="Confirm password" matInput
+					  formControlName="confirmpassword">
+					  <mat-error *ngIf="UserForm.controls['confirmpassword'].value !=
+					  UserForm.controls['user_password'].value" class="col-lg-12">
+							<p style="text-align: center; color: red;">*</p>
+						  </mat-error>
+				  </div>
+	
+			</form>
+	
+		</div>
+		
+	
+	</div>
+	</div>
+		</mat-dialog-content>
+		<mat-dialog-actions align="end">
+			<button mat-button mat-dialog-close="no" class="btn btn-info">Cancel</button>
+			<button mat-button mat-dialog-close="yes" class="btn btn-danger" [disabled]="!UserForm.valid"
+			(click)="createDriver()">Create</button>
+		  </mat-dialog-actions>
+	</ng-template>
+	

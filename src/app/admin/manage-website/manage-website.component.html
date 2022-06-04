@@ -1,0 +1,167 @@
+<app-dashboard></app-dashboard>
+
+
+
+<div class="row mb-4">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+    
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    website Name</th>
+
+                                   
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            website logo</th>    
+
+
+
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                address</th>
+        
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    phone</th>  
+
+                                                   
+                
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            email</th>  
+                                
+                                
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Opration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr *ngFor="let obj of web.website">
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.web_name}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <img src="./../../../assets/Images/{{obj.web_image_logo_path}}" alt="user6">
+
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.address}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.phone}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                              
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.email}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                          
+                              
+                                
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                   (click)="openUpdateDialog(obj.web_id,obj.web_name,obj.web_image_logo_path
+                                   ,obj.address,obj.phone,obj.email)">Update</button>
+                                </td>
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<ng-template #callUpdateDialog>
+    <mat-dialog-content class="mat-typography" style="overflow: hidden;">
+
+
+        <form [formGroup]="updateWebsiteForm" class="example-form">
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                   
+                  <input  type="text" name="web_name" class="form-control" id="fname" placeholder="website name"  matInput
+                  formControlName="web_name">
+                
+                </div>
+  
+  
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="address" id="lname" placeholder="address"  matInput
+                  formControlName="address">
+              
+                </div>
+  
+              </div>
+  
+              <div class="form-group mt-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="email address" matInput
+                formControlName="email" >
+             
+              </div>
+
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="phone " matInput
+                formControlName="phone" >
+             
+              </div>
+             
+
+
+
+            <br/>
+
+              <input type="file" #file placeholder="Choose Image"
+              style="display: none;" (change)="UploadlogoImage(file.files)">
+              <button (click)="file.click()" class="btn btn-success" style="background-color: #f03c02;">Upload
+              Image</button>
+             
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial
+            class="btn btn-info" (click)="saveUpdateWebsite()">Save</button>
+    </mat-dialog-actions>
+</ng-template>

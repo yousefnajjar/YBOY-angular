@@ -1,0 +1,323 @@
+
+<app-dashboard></app-dashboard>
+
+
+<div class="row mb-4">
+    <div class="col-lg-7 col-md-6 mb-md-6 mb-6" >
+    
+    <button  mat-button class="btn btn-danger"
+       (click)="openCreateDialog()" >Add New Product</button>
+<p></p>
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Product Name</th>
+
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Product price</th>
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            product quntity</th>    
+
+
+
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                is available</th>
+        
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    category name</th>  
+
+                                                   
+                
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            product image</th>  
+                                
+                                
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Opration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr *ngFor="let obj of product.allProduct">
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.product_name}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.product_price}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.product_quntity}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.is_available}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                              
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.category_name}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                          
+
+                                <td>
+                                    <img src="./../../../assets/Images/{{obj.image_path}}" alt="user6">
+
+                                </td>
+
+                              
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                       (click)="openDeleteDialog(obj.product_id)">Delete</button>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                       (click)="openUpdateDialog(obj.product_id,
+                                       obj.product_name,obj.product_price,obj.product_quntity,
+                                       obj.is_available,obj.product_description
+                                       ,obj.image_path,obj.category_name,
+                                       obj.category_id)">Update</button>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                       (click)="opendescriptionDialog(obj.product_description)">Description</button>
+                                </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #calldescriptionDialog  >
+  
+    <h2 mat-dialog-title>Description</h2>
+    <mat-dialog-content class="mat-typography" >
+      
+      <textarea>{{description}}</textarea>
+      
+ 
+    </mat-dialog-content>
+  
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Close</button>
+       
+    </mat-dialog-actions>
+</ng-template>
+
+
+<ng-template #callCreateDialog>
+    <mat-dialog-content class="mat-typography" style="overflow: hidden;">
+
+
+        <form [formGroup]="productForm" class="example-form">
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                  <input  type="text" name="fname" class="form-control" id="fname" placeholder="Product name"  matInput
+                  formControlName="product_name">
+                  <mat-error *ngIf="productForm.controls['product_name'].hasError('required')" class="col-lg-12">
+                    <p style="text-align: center; color: red;">*</p>
+                  </mat-error>
+                </div>
+  
+  
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="number" class="form-control" name="lname" id="lname" placeholder="Price"  matInput
+                  formControlName="product_price">
+                  <mat-error *ngIf="productForm.controls['product_price'].hasError('required')" class="col-lg-12">
+                    <p style="text-align: center; color: red;">*</p>
+                 </mat-error>
+                </div>
+  
+              </div>
+  
+              <div class="form-group mt-3">
+                <input type="number" class="form-control" name="email" id="email" placeholder="Product quntity" matInput
+                formControlName="product_quntity" >
+                <mat-error *ngIf="productForm.controls['product_quntity'].hasError('required')" class="col-lg-12">
+                    <p style="text-align: center; color: red;">*</p>
+                 </mat-error>
+              </div>
+
+
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="3" placeholder="Product description" matInput
+                formControlName="product_description" ></textarea>
+                <mat-error *ngIf="productForm.controls['product_description'].hasError('required')" class="col-lg-12">
+                    <p style="text-align: center; color: red;">*</p>
+                 </mat-error>
+              </div>
+
+              <mat-form-field>
+                <mat-label>Select Category </mat-label>
+                <mat-select [(value)]="categoryIdselected" >
+                  <mat-option>None</mat-option>
+                  <mat-option  *ngFor="let obj of product.allCategory" [value]="obj.category_id">
+                      {{obj.category_name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+<br/>
+              <label>Is available :  </label>
+            <mat-radio-group 
+             class="example-radio-group" (change)="setIs_available($event)" >
+                <mat-radio-button class="example-radio-button"  value="Yes">
+                   Yes
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="No">
+                    No
+                 </mat-radio-button>
+            </mat-radio-group>
+
+
+            <br/>
+
+              <input type="file" #file placeholder="Choose Image" formControlName="image_path"
+              style="display: none;" (change)="UploadProductImage(file.files)">
+              <button (click)="file.click()" class="btn btn-success" style="background-color: #f03c02;">Upload
+              Image</button>
+             
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial
+            class="btn btn-info" (click)="saveProduct()" [disabled]="!productForm.valid">Save</button>
+    </mat-dialog-actions>
+</ng-template>
+
+
+
+
+
+<ng-template #callUpdateDialog>
+    <mat-dialog-content class="mat-typography" style="overflow: hidden;">
+
+
+        <form [formGroup]="updateProductForm">
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                   
+                  <input  type="text" name="fname" class="form-control" id="fname" placeholder="Product name"  matInput
+                  formControlName="product_name">
+                
+                </div>
+  
+  
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="number" class="form-control" name="lname" id="lname" placeholder="Price"  matInput
+                  formControlName="product_price">
+              
+                </div>
+  
+              </div>
+  
+              <div class="form-group mt-3">
+                <input type="number" class="form-control" name="email" id="email" placeholder="Product quntity" matInput
+                formControlName="product_quntity" >
+             
+              </div>
+
+
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Product description" matInput
+                formControlName="product_description" ></textarea>
+               
+              </div>
+
+              <mat-form-field>
+                <mat-label>-{{updateProductForm.controls["category_name"].value}}</mat-label>
+                <mat-select [(value)]="categoryIdselected" >
+                   
+                  <mat-option *ngFor="let obj of product.allCategory" 
+                  [value]="obj.category_id" >
+                      {{obj.category_name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+<br/>
+              <label>Is available :  </label>
+            <mat-radio-group 
+             class="example-radio-group" (change)="setIs_available($event)" >
+                <mat-radio-button class="example-radio-button"  value="Yes" checked="{{yes}}">
+                   Yes
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="No" checked="{{no}}">
+                    No
+                 </mat-radio-button>
+            </mat-radio-group>
+
+
+            <br/>
+
+              <input type="file" #file placeholder="Choose Image"
+              style="display: none;" (change)="UploadProductImage(file.files)">
+              <button (click)="file.click()" class="btn btn-success" style="background-color: #f03c02;">Upload
+              Image</button>
+             
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial
+            class="btn btn-info" (click)="saveUpdateProduct()">Save</button>
+    </mat-dialog-actions>
+</ng-template>
+
+
+<ng-template #callDeleteDialog>
+    <h2>Are You Sure you want to delete this Product</h2>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close="no" class="btn btn-info">No</button>
+        <button mat-button mat-dialog-close="yes" class="btn btn-danger">yes</button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+

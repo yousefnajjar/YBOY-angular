@@ -1,0 +1,221 @@
+<app-dashboard></app-dashboard>
+
+
+<div class="row mb-4">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+
+
+        <p></p>
+        <div class="card">
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    order Date</th>
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    quntity</th>
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    total amount</th>
+
+
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    status</th>
+
+
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Opration</th>
+                                    
+                                <th
+                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                </th>
+                                
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr *ngFor="let obj of order.allOrders">
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.order_Date}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.quntity}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.total_amount}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{obj.status}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                    (click)="opendescriptionDialog(obj.order_id)">order Items</button>
+                                </td>
+                                
+                                
+                                <td class="align-middle text-center text-sm">
+                                    <button mat-button mat-dialog-close class="btn btn-danger"
+                                    (click)="openDeleteDialog(obj.order_id)" >Delete
+                                </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<ng-template #callDeleteDialog>
+    <h2>Are You Sure you want to delete this Order</h2>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close="no" class="btn btn-info">No</button>
+        <button mat-button mat-dialog-close="yes" class="btn btn-danger">yes</button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+
+<ng-template #calldescriptionDialog>
+    <mat-dialog-content class="mat-typography">
+
+
+        <div class="row mb-4">
+            <div class="col-lg-8 col-md-6 mb-md-0 mb-4" >
+
+                <div class="card" style="width: 160%;">
+
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive">
+
+
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Product Name</th>
+
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Product price</th>
+                                            
+                                        <th
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Product count</th>
+
+
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            product image</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr *ngFor="let obj of order.orderWithProduct">
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{obj.product_name}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{obj.product_price}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{obj.product_count}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+
+
+                                        <td>
+                                            <img src="./../../../assets/Images/{{obj.image_path}}" alt="user6">
+
+                                        </td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Close</button>
+        <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial
+                class="btn btn-info" (click)="saveProduct()">Save</button> -->
+    </mat-dialog-actions>
+</ng-template>
+
+
+

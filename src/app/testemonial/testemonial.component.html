@@ -1,0 +1,98 @@
+<app-header></app-header>
+<section id="testimonials" class="testimonials">
+
+  <div class="carousel-inner" role="listbox">
+
+
+    <div class="text-center">
+      <p></p>
+    <button mat-button mat-dialog-close class="btn btn-danger"
+(click)="openCreateTestimonialDialog()">Add Feedback</button>
+    </div>
+      
+<p></p>
+      
+</div>
+    <div class="container"*ngFor="let obj of test.allTestemonial">
+
+      <div class="row" >
+
+        <div class="col-lg-12" data-aos="fade-up">
+          <div class="testimonial-item">
+            <img src="./../../assets/Images/{{obj.image_path}}" class="testimonial-img" alt="">
+            <h3>{{obj.fname}} {{obj.lname}}</h3>
+            <h4>Ceo &amp; Founder</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              {{obj.feedback_mess}}
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <p></p>
+
+    </div>
+
+  </section>
+
+
+  
+  <ng-template #callCreateTestimonialDialog>
+    <mat-dialog-content class="mat-typography">
+      <form [formGroup]="testemonialForm" class="example-form">
+        <ul>
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+             
+              <input type="text" matInput formControlName="fname" placeholder="Your First Name">
+              <mat-error *ngIf="testemonialForm.controls['fname'].hasError('required')">
+                First Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+             
+              <input type="text" matInput formControlName="lname" placeholder="Your Last Name">
+              <mat-error *ngIf="testemonialForm.controls['lname'].hasError('required')">
+                Last Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </li>
+
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter Your Feedback </mat-label>
+              <input type="text" matInput formControlName="feedback_mess" placeholder="Your Feedback">
+              <mat-error *ngIf="testemonialForm.controls['feedback_mess'].hasError('required')">
+                Your Feedback is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </li> 
+
+          <li>
+            <input type="file" #file placeholder="Choose Image" formControlName="image_path"
+             style="display: none;" (change)="uploadImage(file.files)">
+            <button (click)="file.click()" class="btn btn-success" 
+           style="background-color: #f03c02;" >Upload Image</button>
+          </li>
+         
+        </ul>
+
+      </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+      <button mat-button [mat-dialog-close]="true" 
+        [disabled]="!testemonialForm.valid" cdkFocusInitial class="btn btn-info"
+        (click)="saveTestimonial()">Save</button>
+    </mat-dialog-actions>
+  </ng-template>
+
+
+<app-footer></app-footer>

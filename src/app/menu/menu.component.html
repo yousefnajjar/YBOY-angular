@@ -1,0 +1,143 @@
+<app-header></app-header>
+
+<ng-container >
+<div class="hover">
+  <a (click)="saveOrder()" 
+  *ngIf="save()" class="btn-get-started" style="color: rgb(163, 163, 163); position: relative; top:43px; z-index:99 ;">Save Order</a>
+  
+</div>
+</ng-container>
+<ng-container *ngFor="let obj1 of product.countOfCategory">
+
+
+  <section id="hero">
+
+    <div id="{{obj1.category_name}}" data-bs-interval="5000" class="carousel slide carousel-fade"
+      data-bs-ride="carousel">
+
+      <div class="carousel-inner" role="listbox">
+
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <div class="card" style="background-image: url('./../../assets/Images/cccc.jpg');
+            background-size: cover;">
+              <div class="content2">
+                <div>
+                  <h2 class="title">Our {{obj1.category_name}}</h2>
+                  <h4 class="title"></h4>
+                  <h4 class="title"></h4>
+                  <h4 class="title"></h4>
+                  <h4 class="title"></h4>
+                  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <p class="copy"></p>
+                <div class=" animate__animated animate__fadeInUp hover">
+
+                  <!-- <a class="btn-get-started" style="color: white;">Add to Cart</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <ng-container *ngFor="let obj of product.allProduct">
+
+
+          <ng-container *ngIf="obj1.category_name == obj.category_name">
+
+
+            <div class="carousel-item">
+              <div class="carousel-container">
+                <div class="card" style.background-image="url('./../../assets/Images/{{obj.image_path}}')">
+                  <div class="content2">
+                    <div>
+                      <h2 class="title">{{obj.product_name}}</h2>
+                      <h4 class="title">{{obj.product_price }} JD</h4>
+                    </div>
+                    <p class="copy">{{obj.product_description}}</p>
+                    <div class=" animate__animated animate__fadeInUp hover">
+
+                      <a class="btn-get-started" style="color: white;" (click)="addItems(obj.product_id,
+                      obj.category_name,obj.product_price)">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+
+
+        </ng-container>
+
+
+
+
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+    <a class="carousel-control-prev" href="#{{obj1.category_name}}" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bx bx-left-arrow" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#{{obj1.category_name}}" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bx bx-right-arrow" aria-hidden="true"></span>
+    </a>
+
+    <ol class="carousel-indicators" id="hero-carousel">
+      <li data-bs-target="#hero" data-bs-slide-to="0" class="active" aria-current="true"></li>
+      <li data-bs-target="#hero" data-bs-slide-to="2" class=""></li>
+      <li data-bs-target="#hero" data-bs-slide-to="1" class=""></li>
+
+    </ol>
+
+
+  </section>
+
+
+</ng-container>
+
+
+
+
+
+<ng-container *ngFor="let obj1 of product.countOfCategory">
+  <h1 class="h1" data-aos="fade-up">Our {{obj1.category_name}}</h1>
+
+
+
+  <div class="page-content">
+    <ng-container *ngFor="let obj of product.allProduct">
+      <div class="card" data-aos="fade-up" *ngIf="obj1.category_name == obj.category_name"
+        style.background-image="url('./../../assets/Images/{{obj.image_path}}')">
+        <div class="content2">
+          <div>
+            <h2 class="title">{{obj.product_name}}</h2>
+            <h4 class="title">{{obj.product_price }} JD</h4>
+          </div>
+          <p class="copy">{{obj.product_description}}</p>
+          <div class="carousel-content animate__animated animate__fadeInUp hover">
+            <a class="btn-get-started" style="color: white;" (click)="addItems(obj.product_id,
+            obj.category_name,obj.product_price)">Add to Cart</a>
+          </div>
+        </div>
+
+
+      </div>
+    </ng-container>
+  </div>
+
+</ng-container>
+
+
+
+  <app-footer></app-footer>

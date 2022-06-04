@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="img">
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form [formGroup]="loginForm">
+			<h1>Sign in</h1>
+	
+			<div class="form-group input-group">
+			<mat-error *ngIf="loginForm.controls['user_email'].hasError('required')" >
+				
+			  </mat-error>
+			 
+			  <input  type="email" class="input form-control" placeholder="Email" matInput
+				formControlName="user_email">
+			  <mat-error *ngIf="loginForm.controls['user_email'].hasError('email') && 
+			  !loginForm.controls['user_email'].hasError('required')" class="col-lg-12">
+				<p style="text-align: center; color: red;"> Please enter a valid email address</p>
+			  </mat-error>
+			  </div>
+
+
+			  <div class="form-group input-group">
+				<mat-error *ngIf="loginForm.controls['user_password'].hasError('required')">
+				 
+				</mat-error>
+			
+				<input  type="password" class="input form-control" placeholder="password" matInput
+				  formControlName="user_password">
+				<mat-error class="col-lg-12"
+				  *ngIf="loginForm.controls['user_password'].hasError('minlength') && !loginForm.controls['user_password'].hasError('required')">
+				  *
+				</mat-error>
+			  </div>
+
+
+			
+			<button (click)="login()"  [disabled]="!loginForm.valid ">Login</button>
+			<a href="auth/register">Create New Account?</a>
+		</form>
+		
+	</div>
+	
+</div>
+</div>
+
+<app-footer></app-footer>

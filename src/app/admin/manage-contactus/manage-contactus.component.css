@@ -1,0 +1,16 @@
+@media (max-width: 1800px ) {
+  .row{
+      margin-left: 305px;
+  }
+}
+
+
+@media (max-width: 1200px ) {
+  .row{
+      margin: auto;
+      padding-top: 57px;
+  }
+}
+.card {
+  width: 150%;
+}
